@@ -28,7 +28,7 @@ public class CMD_msg_succeed extends UapiBase {
      */
     @NotEmpty("key")
     @Mapping("/msg/succeed/")
-    protected Result cmd_exec(String broker, String key, String subscriber_key) throws Exception {
+    public Result cmd_exec(String broker, String key, String subscriber_key) throws Exception {
 
         if (TextUtils.isEmpty(subscriber_key)) {
             ProtocolHub.getMsgSource(broker).setMessageAsSucceed(key);
