@@ -44,9 +44,9 @@ public class DsUtils {
             HikariDataSource source = new HikariDataSource();
 
             for (FieldWrap fw : ClassWrap.get(HikariDataSource.class).fieldAllWraps()) {
-                String valStr = prop.getProperty(fw.name());
+                String valStr = prop.getProperty(fw.getName());
                 if (TextUtils.isNotEmpty(valStr)) {
-                    Object val = ConvertUtil.to(fw.type, valStr);
+                    Object val = ConvertUtil.to(fw.getType(), valStr);
                     fw.setValue(source, val);
                 }
             }
