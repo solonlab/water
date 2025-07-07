@@ -12,6 +12,7 @@
     </parent>
 
     <artifactId>water.server</artifactId>
+    <name>${project.artifactId}</name>
     <packaging>jar</packaging>
 
 
