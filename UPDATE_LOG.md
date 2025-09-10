@@ -1,4 +1,11 @@
 
+#### 2.17.0
+
+* 调整 groupId 改为 org.noear.water
+* 迁入 water-solon-cloud-plugin（改为 AGPL 3.0 协议后，不适合放在 solon-cloud 仓库）
+* solon 升为 3.5.1
+* snack3 升为 3.2.139
+
 #### 2.16.0
 
 * solon 升为 3.4.0
