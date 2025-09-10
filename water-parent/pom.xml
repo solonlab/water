@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.noear</groupId>
+    <groupId>org.noear.water</groupId>
     <artifactId>water-parent</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
@@ -36,20 +36,20 @@
     </scm>
 
     <properties>
-        <revision>2.16.0</revision>
+        <revision>2.17.0</revision>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <solon.version>3.4.0</solon.version>
+        <solon.version>3.5.1</solon.version>
 
         <luffy.version>1.9.5</luffy.version>
 
         <grit.version>2.0.2</grit.version>
         <rock.version>2.12.0</rock.version>
 
-        <snack3.version>3.2.135</snack3.version>
+        <snack3.version>3.2.139</snack3.version>
         <wood.version>1.3.21</wood.version>
         <redisx.version>1.7.0</redisx.version>
         <mongox.version>1.0.5</mongox.version>
@@ -80,26 +80,32 @@
             </dependency>
 
             <dependency>
-                <groupId>org.noear</groupId>
+                <groupId>org.noear.water</groupId>
                 <artifactId>water.utils</artifactId>
                 <version>${revision}</version>
             </dependency>
 
             <dependency>
-                <groupId>org.noear</groupId>
+                <groupId>org.noear.water</groupId>
                 <artifactId>water.protocol</artifactId>
                 <version>${revision}</version>
             </dependency>
 
             <dependency>
-                <groupId>org.noear</groupId>
+                <groupId>org.noear.water</groupId>
                 <artifactId>water.server</artifactId>
                 <version>${revision}</version>
             </dependency>
 
             <dependency>
-                <groupId>org.noear</groupId>
+                <groupId>org.noear.water</groupId>
                 <artifactId>water.client</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.noear.water</groupId>
+                <artifactId>water-solon-cloud-plugin</artifactId>
                 <version>${revision}</version>
             </dependency>
 
@@ -117,19 +123,19 @@
 
             <dependency>
                 <groupId>org.noear</groupId>
-                <artifactId>solon-boot-smarthttp</artifactId>
+                <artifactId>solon-server-smarthttp</artifactId>
                 <version>${solon.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.noear</groupId>
-                <artifactId>solon-boot-undertow</artifactId>
+                <artifactId>solon-server-undertow</artifactId>
                 <version>${solon.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.noear</groupId>
-                <artifactId>solon-boot-jetty</artifactId>
+                <artifactId>solon-server-jetty</artifactId>
                 <version>${solon.version}</version>
             </dependency>
 
@@ -475,5 +481,6 @@
         <module>../water.protocol</module>
         <module>../water.client</module>
         <module>../water.server</module>
+        <module>../water-solon-cloud-plugin</module>
     </modules>
 </project>

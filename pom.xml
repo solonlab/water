@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.noear</groupId>
+    <groupId>org.noear.water</groupId>
     <artifactId>water_java</artifactId>
     <version>dev</version>
     <packaging>pom</packaging>

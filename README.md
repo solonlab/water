@@ -9,7 +9,7 @@
         <img src="https://img.shields.io/maven-central/v/org.noear/water.client.svg?label=Maven%20Central" alt="Maven" />
     </a>
     <a target="_blank" href="LICENSE">
-		<img src="https://img.shields.io/:license-LGPL2.1-blue.svg" alt="LGPL2.1" />
+		<img src="https://img.shields.io/:license-AGPL3.0-blue.svg" alt="AGPL3.0" />
 	</a>
     <a target="_blank" href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">
 		<img src="https://img.shields.io/badge/JDK-8+-green.svg" alt="jdk-8+" />
@@ -48,15 +48,15 @@
 
 | 组件                          | 说明                                          |
 |-----------------------------|---------------------------------------------|
-| org.noear:water.client      | 框架：Water 客户端                                |
-| org.noear:water-solon-cloud-plugin | 框架：Water 客户端 for solon（也可用于 Spring Boot 项目） |
+| water.client      | 框架：Water 客户端                                |
+| water-solon-cloud-plugin | 框架：Water 客户端 for solon（也可用于 Spring Boot 项目） |
 |                             |                                             |
-| org.noear:waterapi          | 构建：Water 服务端                                |
-| org.noear:watersev          | 构建：Water 后台服务（健康检测；数据监视；消息派发；定时任务等...）      |
-| org.noear:wateradmin        | 构建：Water 控制台（支持LDAP登录）                      |
-| org.noear:waterfaas         | 构建：Water FaaS 服务，提供轻量级FaaS服务                |
+| waterapi          | 构建：Water 服务端                                |
+| watersev          | 构建：Water 后台服务（健康检测；数据监视；消息派发；定时任务等...）      |
+| wateradmin        | 构建：Water 控制台（支持LDAP登录）                      |
+| waterfaas         | 构建：Water FaaS 服务，提供轻量级FaaS服务                |
 |                             |                                             |
-| org.noear:xwater         | 构建：Water 助理工具                               |
+| xwater         | 构建：Water 助理工具                               |
 
 
 ### 控制台演示站
@@ -103,16 +103,16 @@
 ```xml
 <!-- 客户端版本 -->
 <dependency>
-    <groupId>org.noear</groupId>
+    <groupId>org.noear.water</groupId>
     <artifactId>water.client</artifactId>
-    <version>2.16.0</version>
+    <version>2.17.0</version>
 </dependency>
 
 <!-- solon cloud 集成版本 （也可用于 Spring Boot 项目） -->
 <dependency>
-    <groupId>org.noear</groupId>
+    <groupId>org.noear.water</groupId>
     <artifactId>water-solon-cloud-plugin</artifactId>
-    <version>3.0.3</version>
+    <version>2.17.0</version>
 </dependency>
 ```
 

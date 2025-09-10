@@ -11,20 +11,22 @@
         <relativePath>../water-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>water.client</artifactId>
+    <artifactId>water-solon-cloud-plugin</artifactId>
     <name>${project.artifactId}</name>
     <packaging>jar</packaging>
 
+
     <dependencies>
         <dependency>
-            <groupId>org.noear.water</groupId>
-            <artifactId>water.utils</artifactId>
+            <groupId>org.noear</groupId>
+            <artifactId>solon-cloud</artifactId>
+            <version>${solon.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <groupId>org.noear</groupId>
+            <artifactId>solon-logging-simple</artifactId>
+            <version>${solon.version}</version>
         </dependency>
 
         <dependency>
@@ -33,31 +35,28 @@
         </dependency>
 
         <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>wood.cache.memcached</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>wood.cache.redis</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>redisx</artifactId>
+            <groupId>org.noear.water</groupId>
+            <artifactId>water.client</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <scope>provided</scope>
+            <version>${hikaricp.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
 </project>
