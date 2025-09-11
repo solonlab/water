@@ -6,7 +6,7 @@
 </p>
 <p align="center">
     <a target="_blank" href="https://search.maven.org/search?q=org.noear%20water">
-        <img src="https://img.shields.io/maven-central/v/org.noear/water.client.svg?label=Maven%20Central" alt="Maven" />
+        <img src="https://img.shields.io/maven-central/v/org.noear.water/water.client.svg?label=Maven%20Central" alt="Maven" />
     </a>
     <a target="_blank" href="LICENSE">
 		<img src="https://img.shields.io/:license-AGPL3.0-blue.svg" alt="AGPL3.0" />
