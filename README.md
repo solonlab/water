@@ -158,7 +158,6 @@ public class DemoApp {
 
 @Configuration
 public class DemoConfig {
-
     @Bean
     public DataSource db1(@CloudConfig("demoDb") HikariDataSource ds) {
         //配置一个数据源
@@ -224,7 +223,6 @@ public class TestConfigHandler implements CloudConfigHandler {
 //分布式任务
 @CloudJob(name = "demo_test", cron7x = "0 1 * * * ?")
 public class Job_test implements CloudJobHandler {
-
     @Override
     public void handle(Context ctx) throws Throwable {
         //处理任务...
