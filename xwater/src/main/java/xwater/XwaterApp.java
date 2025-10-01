@@ -11,6 +11,7 @@ package xwater;
 
 import org.noear.solon.Solon;
 import org.noear.solon.core.NvMap;
+import org.noear.solonx.licence.LicenceInfo;
 
 public class XwaterApp {
     public static void main(String[] args) {
@@ -20,6 +21,9 @@ public class XwaterApp {
         Solon.start(XwaterApp.class, argx, x -> {
             //加载环境变量(支持弹性容器设置的环境)
             x.cfg().loadEnv("water.");
+
+            //避免补排除
+            LicenceInfo.check();
         });
     }
 }

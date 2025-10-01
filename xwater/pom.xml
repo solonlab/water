@@ -66,6 +66,18 @@
         </dependency>
 
         <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>solon-logging-simple</artifactId>
+            <version>${solon.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>solonx-licence</artifactId>
+            <version>${solonx.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.noear.water</groupId>
             <artifactId>water.protocol</artifactId>
         </dependency>

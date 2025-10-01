@@ -1,4 +1,20 @@
 
+#### 2.18.0
+
+* 添加 solonx-licence 依赖
+* 调整 waterfaas, watersev 移除 rock.client 依赖
+* solon 升为 3.6.0
+
+移除 rock 工具依赖：
+
+```
+if(ClassUtil.hasClass(()-> RockUtil.class)){
+    x.sharedAdd("RockClient", RockClient.class);
+    x.sharedAdd("RockUtil", RockUtil.class);
+}
+```
+
+
 #### 2.17.0
 
 * 调整 groupId 改为 org.noear.water

@@ -71,6 +71,12 @@
 
         <dependency>
             <groupId>org.noear</groupId>
+            <artifactId>solonx-licence</artifactId>
+            <version>${solonx.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
             <artifactId>snack3</artifactId>
         </dependency>
 

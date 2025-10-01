@@ -7,6 +7,7 @@ import org.noear.solon.core.util.MultiMap;
 import org.noear.solon.extend.schedule.JobRunner;
 import org.noear.luffy.dso.*;
 import org.noear.solon.extend.schedule.XJobPluginImp;
+import org.noear.solonx.licence.LicenceInfo;
 import org.noear.water.WaterClient;
 import org.noear.water.WaterProxy;
 import org.noear.water.protocol.solution.*;
@@ -69,6 +70,9 @@ public class WatersevApp {
 
             //加载环境变量(支持弹性容器设置的环境)
             x.cfg().loadEnv("water.");
+
+            //避免补排除
+            LicenceInfo.check();
 
             //设置接口
             //

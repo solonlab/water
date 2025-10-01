@@ -14,6 +14,7 @@ import org.noear.solon.cloud.CloudClient;
 import org.noear.solon.cloud.model.Instance;
 import org.noear.solon.net.http.PreheatUtils;
 import org.noear.solon.core.event.EventBus;
+import org.noear.solonx.licence.LicenceInfo;
 import org.noear.water.WW;
 import org.noear.water.WaterClient;
 import org.noear.water.protocol.ProtocolHub;
@@ -27,6 +28,12 @@ import wateradmin.dso.db.DbWaterCfgApi;
 public class WateradminApp {
     public static void main(String[] args) throws Exception {
         Solon.start(WateradminApp.class, args, x -> {
+            //加载环境变量(支持弹性容器设置的环境)
+            x.cfg().loadEnv("water.");
+
+            //避免补排除
+            LicenceInfo.check();
+
             x.pluginAdd(0, new InitPlugin());
 
             //设置接口

@@ -31,6 +31,7 @@ import org.noear.solon.cloud.model.Instance;
 import org.noear.solon.core.AppContext;
 import org.noear.solon.core.LifecycleIndex;
 import org.noear.solon.core.Plugin;
+import org.noear.solonx.licence.LicenceInfo;
 import org.noear.water.WW;
 import org.noear.water.WaterAddress;
 import org.noear.water.WaterClient;
@@ -118,6 +119,9 @@ public class WaterCloudPlugin implements Plugin {
 
     @Override
     public void start(AppContext context) throws Throwable {
+        //避免补排除
+        LicenceInfo.check();
+
         if (initDo(context) == false) {
             return;
         }

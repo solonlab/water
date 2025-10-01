@@ -1,6 +1,7 @@
 package waterapi;
 
 import org.noear.solon.Solon;
+import org.noear.solonx.licence.LicenceInfo;
 import org.noear.water.WW;
 import org.noear.water.protocol.ProtocolHub;
 import org.noear.water.protocol.solution.*;
@@ -17,6 +18,9 @@ public class WaterapiApp {
 
 			//加载环境变量(支持弹性容器设置的环境)
 			x.cfg().loadEnv("water.");
+
+            //避免补排除
+            LicenceInfo.check();
 
 			//设置接口
 			//

@@ -37,13 +37,13 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>snack3</artifactId>
+            <artifactId>solonx-licence</artifactId>
+            <version>${solonx.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>rock.client</artifactId>
-            <version>${rock.version}</version>
+            <artifactId>snack3</artifactId>
         </dependency>
 
         <dependency>
