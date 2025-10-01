@@ -1,12 +1,9 @@
 package watersev;
 
 import luffy.WaterImpl;
-import org.noear.rock.RockClient;
-import org.noear.rock.RockUtil;
 import org.noear.solon.Solon;
-import org.noear.solon.Utils;
 import org.noear.solon.core.NvMap;
-import org.noear.solon.core.util.ClassUtil;
+import org.noear.solon.core.util.MultiMap;
 import org.noear.solon.extend.schedule.JobRunner;
 import org.noear.luffy.dso.*;
 import org.noear.solon.extend.schedule.XJobPluginImp;
@@ -47,7 +44,7 @@ public class WatersevApp {
     public static void main(String[] args) throws Exception{
 
         //开始
-        NvMap xMap = NvMap.from(args);
+        MultiMap<String> xMap = MultiMap.from(args);
 
         //是否有端口
         boolean has_server_port = xMap.containsKey("server.port");
@@ -102,11 +99,6 @@ public class WatersevApp {
             x.sharedAdd("LocalDate", LocalDate.class);
             x.sharedAdd("LocalTime", LocalTime.class);
             x.sharedAdd("LocalDateTime", LocalDateTime.class);
-
-            if(ClassUtil.hasClass(()-> RockUtil.class)){
-                x.sharedAdd("RockClient", RockClient.class);
-                x.sharedAdd("RockUtil", RockUtil.class);
-            }
 
             x.pluginAdd(-1, new InitPlugin());
 
