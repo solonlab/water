@@ -1,6 +1,6 @@
 package watersev.controller;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 
 /**
  * 数据监视结果
@@ -12,7 +12,7 @@ public class MotResult {
     public final boolean succeed;
 
     public MotResult(Object data, boolean succeed) {
-        this.data = ONode.loadObj(data);
+        this.data = ONode.ofBean(data);
         this.succeed = succeed;
     }
 

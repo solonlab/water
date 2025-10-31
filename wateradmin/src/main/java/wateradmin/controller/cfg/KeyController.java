@@ -150,7 +150,7 @@ public class KeyController extends BaseController {
                 return viewModel.code(0, "数据不对！");
             }
 
-            List<KeyModel> list = entity.data.toObjectList(KeyModel.class);
+            List<KeyModel> list = entity.data.toBeanList(KeyModel.class);
 
             for (KeyModel m : list) {
                 DbWaterCfgKeyApi.impKeyOrRep(tag, m);

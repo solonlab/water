@@ -1,8 +1,8 @@
 package watersev.controller;
 
 import luffy.JtRun;
-import org.noear.snack.ONode;
-import org.noear.snack.core.Options;
+import org.noear.snack4.ONode;
+import org.noear.snack4.Options;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.core.handle.ContextEmpty;
@@ -28,7 +28,7 @@ import java.util.List;
  * */
 @Component
 public final class MotController implements IJob {
-    static Options json_cfg = new Options();
+    static Options json_cfg =  Options.of();
 
     @Override
     public String getName() {
@@ -121,7 +121,7 @@ public final class MotController implements IJob {
 
         String task_tag = null;
 
-        if (motResult.data.count() > 0) {
+        if (motResult.data.size() > 0) {
             task_tag = RuleUtil.format(model_json, "fmt_tag_" + task.monitor_id, task.task_tag_exp);
         }
 

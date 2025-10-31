@@ -9,7 +9,7 @@
  */
 package org.noear.water.dso;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WaterAddress;
 import org.noear.water.model.ConfigM;
 import org.noear.water.model.ConfigSetM;
@@ -64,7 +64,7 @@ public class ConfigApi {
 
         try {
             String temp = apiCaller.get("/cfg/get/?v=2&tag=" + tag);
-            cfgSet.load(ONode.loadStr(temp));
+            cfgSet.load(ONode.ofJson(temp));
         } catch (Exception ex) {
             ex.printStackTrace();
             //

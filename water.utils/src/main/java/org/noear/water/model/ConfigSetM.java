@@ -9,7 +9,7 @@
  */
 package org.noear.water.model;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 
 import java.util.HashMap;
 import java.util.Properties;
@@ -59,7 +59,7 @@ public class ConfigSetM {
         int code = node.get("code").getInt();
 
         if (code == 1 || code == 200) {
-            node.get("data").forEach((k, v) -> {
+            node.get("data").getObject().forEach((k, v) -> {
                 ConfigM val = new ConfigM(
                         v.get("key").getString(),
                         v.get("value").getString(),

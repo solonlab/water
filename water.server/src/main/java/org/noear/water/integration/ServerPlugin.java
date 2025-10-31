@@ -1,6 +1,6 @@
 package org.noear.water.integration;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.core.AppContext;
 import org.noear.solon.core.Plugin;
@@ -40,7 +40,7 @@ public class ServerPlugin implements Plugin {
                     if (isWoodStyle2) {
                         System.out.println(cmd.toSqlString());
                     } else {
-                        System.out.println(cmd.text + "\n" + ONode.stringify(cmd.paramMap()));
+                        System.out.println(cmd.text + "\n" + ONode.serialize(cmd.paramMap()));
                     }
                 }
 
@@ -66,7 +66,7 @@ public class ServerPlugin implements Plugin {
                     if (isWoodStyle2) {
                         System.out.println(cmd.toSqlString());
                     } else {
-                        System.out.println(cmd.text + "\n" + ONode.stringify(cmd.paramMap()));
+                        System.out.println(cmd.text + "\n" + ONode.serialize(cmd.paramMap()));
                     }
                 }
 

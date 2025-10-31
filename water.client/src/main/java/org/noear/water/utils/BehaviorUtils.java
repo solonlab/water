@@ -9,7 +9,7 @@
  */
 package org.noear.water.utils;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WW;
 import org.noear.water.WaterClient;
 import org.noear.water.model.LogM;
@@ -100,7 +100,7 @@ public class BehaviorUtils {
         StringBuilder content = new StringBuilder();
 
         content.append(schema).append("::").append(cmd.text);
-        content.append("<n-l>$$$").append(ONode.stringify(cmd.paramMap())).append("</n-l>");
+        content.append("<n-l>$$$").append(ONode.serialize(cmd.paramMap())).append("</n-l>");
 
         logM.content = content.toString();
         logM.from = operator_ip;

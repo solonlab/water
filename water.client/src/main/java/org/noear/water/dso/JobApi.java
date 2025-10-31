@@ -9,7 +9,7 @@
  */
 package org.noear.water.dso;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WaterAddress;
 import org.noear.water.model.JobM;
 import org.noear.water.utils.TextUtils;
@@ -47,7 +47,7 @@ public class JobApi {
             return false;
         }
 
-        String jobs_str = ONode.stringify(jobs);
+        String jobs_str = ONode.serialize(jobs);
 
         Map<String, String> params = new HashMap<>();
         params.put("tag", tag);
@@ -56,7 +56,7 @@ public class JobApi {
 
         String txt = apiCaller.post("/job/register/", params);
 
-        int code = ONode.loadStr(txt).get("code").getInt();
+        int code = ONode.ofJson(txt).get("code").getInt();
         return code == 1 || code == 200;
     }
 }

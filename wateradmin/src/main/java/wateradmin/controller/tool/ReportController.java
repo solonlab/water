@@ -1,6 +1,6 @@
 package wateradmin.controller.tool;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Utils;
 import org.noear.water.WaterClient;
 import org.noear.wood.DataItem;
@@ -144,7 +144,7 @@ public class ReportController extends BaseController {
     public String doQuery(Integer row_id,Boolean is_condition,String conditon_param) throws SQLException{
         ONode params = new ONode();
         if (!TextUtils.isEmpty(conditon_param)) {
-            params = ONode.load(conditon_param);
+            params = ONode.ofJson(conditon_param);
         }
 
         ReportModel report = DbWaterApi.reportGet(row_id);
@@ -237,7 +237,7 @@ public class ReportController extends BaseController {
             }
 
 
-            for (Map.Entry<String, ONode> entry : params.obj().entrySet()) {
+            for (Map.Entry<String, ONode> entry : params.getObject().entrySet()) {
                 String value = entry.getValue().getString();
                 String key = entry.getKey().trim();
                 String mapKey = key.replaceAll("@", "");

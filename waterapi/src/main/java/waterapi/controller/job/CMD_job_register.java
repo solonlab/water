@@ -9,7 +9,7 @@
  */
 package waterapi.controller.job;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -47,19 +47,19 @@ public class CMD_job_register extends UapiBase {
 
 
         if (LockUtils.tryLock(Solon.cfg().appName(), ("job_register_" + tag + "_" + service), 30)) {
-            ONode oNode = ONode.loadStr(jobs);
+            ONode oNode = ONode.ofJson(jobs);
             Date nTime = new Date();
 
             //兼容旧的方案
             if (oNode.isObject()) {
-                Map<String, String> jobMap = oNode.toObject(Map.class);
+                Map<String, String> jobMap = oNode.toBean(Map.class);
                 for (Map.Entry<String, String> kv : jobMap.entrySet()) {
                     DbPassApi.addJob(tag, service, kv.getKey(), null, kv.getValue(), nTime);
                 }
             }
 
             if (oNode.isArray()) {
-                List<JobM> jobList = oNode.toObjectList(JobM.class);
+                List<JobM> jobList = oNode.toBeanList(JobM.class);
                 for (JobM job : jobList) {
                     DbPassApi.addJob(tag, service, job.name, job.cron7x, job.description, nTime);
                 }

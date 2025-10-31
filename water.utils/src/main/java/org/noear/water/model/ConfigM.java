@@ -11,7 +11,7 @@ package org.noear.water.model;
 
 import org.noear.esearchx.EsContext;
 import org.noear.redisx.RedisClient;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WaterProps;
 import org.noear.water.utils.*;
 import org.noear.wood.DbContext;
@@ -107,7 +107,7 @@ public final class ConfigM {
         }
 
         if (value.trim().startsWith("{")) {
-            return getNode().toObject(clz);
+            return getNode().toBean(clz);
         }
 
         return getProp().toObject(clz);

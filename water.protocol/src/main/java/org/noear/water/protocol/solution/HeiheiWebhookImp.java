@@ -1,6 +1,6 @@
 package org.noear.water.protocol.solution;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WW;
 import org.noear.water.protocol.Heihei;
 import org.noear.water.utils.HttpResultException;

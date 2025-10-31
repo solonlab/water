@@ -1,6 +1,6 @@
 package org.noear.water.utils;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 
 import java.io.IOException;
 
@@ -10,10 +10,10 @@ public class JsondUtils {
     public static String encode(String table, Object data) throws IOException {
         JsondEntity entity = new JsondEntity();
         entity.table = table;
-        entity.data = ONode.loadObj(data);
+        entity.data = ONode.ofBean(data);
 
         //序列化
-        String json = ONode.stringify(entity);
+        String json = ONode.serialize(entity);
 
         //压缩
         String gzip = GzipUtils.gZip(json);

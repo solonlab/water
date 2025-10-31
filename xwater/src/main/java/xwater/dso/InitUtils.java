@@ -1,6 +1,6 @@
 package xwater.dso;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Utils;
 import org.noear.solon.core.util.ResourceUtil;
 import org.noear.wood.DbContext;
@@ -124,10 +124,10 @@ public class InitUtils {
             json = Base64Utils2.decode(json);
         }
 
-        ONode array = ONode.loadStr(json);
+        ONode array = ONode.ofJson(json);
         List<T> dataItems = new ArrayList<>();
-        for (ONode n1 : array.ary()) {
-            dataItems.add(n1.toObject(clz));
+        for (ONode n1 : array.getArray()) {
+            dataItems.add(n1.toBean(clz));
         }
 
         if (dataItems.size() > 0) {

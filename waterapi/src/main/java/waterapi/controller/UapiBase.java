@@ -1,6 +1,6 @@
 package waterapi.controller;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Render;
 import org.noear.solon.core.handle.Result;
@@ -34,7 +34,7 @@ public class UapiBase implements Render {
                     obj = Result.failure(err.getMessage());
                 }
 
-                ctx.outputAsJson(ONode.stringify(obj));
+                ctx.outputAsJson(ONode.serialize(obj));
             }
         }
     }

@@ -3,7 +3,7 @@ package wateradmin.controller.dev;
 import lombok.extern.slf4j.Slf4j;
 import org.noear.esearchx.EsCommand;
 import org.noear.esearchx.EsContext;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
@@ -49,23 +49,23 @@ public class QueryEsController extends BaseController {
         ONode node = new ONode();
         //1.对不良条件进行过滤
         if (TextUtils.isEmpty(code)) {
-            return node.val("请输入代码").toJson();
+            return node.setValue("请输入代码").toJson();
         }
 
         if (code.indexOf("#") < 0)
-            return node.val("请指定配置").toJson();
+            return node.setValue("请指定配置").toJson();
 
         String code_raw = code;
         String[] ss = code.trim().split("\n");
 
         if (ss.length < 3) {
-            return node.val("请输入有效代码").toJson();
+            return node.setValue("请输入有效代码").toJson();
         }
 
         //1.检查配置
         String cfg_str = ss[0].trim();
         if (cfg_str.startsWith("#") == false || cfg_str.indexOf("/") < 0) {
-            return node.val("请输入有效的配置").toJson();
+            return node.setValue("请输入有效的配置").toJson();
         } else {
             cfg_str = cfg_str.substring(1).trim();
         }
@@ -75,14 +75,14 @@ public class QueryEsController extends BaseController {
         String[] ss2 = methodAndPath.split(" ");
 
         if (ss2.length != 2) {
-            return node.val("请输入有效的Method和Path").toJson();
+            return node.setValue("请输入有效的Method和Path").toJson();
         }
 
         String method = ss2[0].trim().toUpperCase();
         String path = ss2[1].trim();
 
         if ((method.equals("GET") && path.endsWith("_search")) == false) {
-            return node.val("只支持查询操作").toJson();
+            return node.setValue("只支持查询操作").toJson();
         }
 
 
@@ -92,8 +92,8 @@ public class QueryEsController extends BaseController {
             json.append(ss[i]);
         }
 
-        if( ONode.loadStr(json.toString()).isObject()==false){
-            return node.val("请输入有效的Json代码").toJson();
+        if( ONode.ofJson(json.toString()).isObject()==false){
+            return node.setValue("请输入有效的Json代码").toJson();
         }
 
         try {

@@ -1,7 +1,7 @@
 package waterfaas.dso;
 
 import lombok.extern.slf4j.Slf4j;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.core.event.EventListener;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.logging.utils.TagsMDC;
@@ -25,7 +25,7 @@ public class ErrorListener implements EventListener<Throwable> {
             TagsMDC.tag0(ctx.path());
             TagsMDC.tag1(ex.getClass().getSimpleName());
 
-            String param = ONode.stringify(ctx.paramMap());
+            String param = ONode.serialize(ctx.paramMap());
             log.error("> Param: {}\n\n< Error: {}", param, ex);
         }
     }

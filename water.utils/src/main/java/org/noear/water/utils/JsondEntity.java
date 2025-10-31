@@ -9,7 +9,7 @@
  */
 package org.noear.water.utils;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 
 /**
  * @author noear 2021/1/20 created

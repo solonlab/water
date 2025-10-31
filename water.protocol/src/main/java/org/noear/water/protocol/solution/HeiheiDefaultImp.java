@@ -1,6 +1,6 @@
 package org.noear.water.protocol.solution;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WW;
 import org.noear.water.protocol.Heihei;
 import org.noear.water.utils.Base64Utils;
@@ -35,15 +35,15 @@ public class HeiheiDefaultImp implements Heihei {
             return null;
         }
 
-        ONode data = new ONode().build((d) -> {
-            d.getOrNew("platform").val("all");
+        ONode data = new ONode().then((d) -> {
+            d.getOrNew("platform").setValue("all");
 
             d.getOrNew("audience").getOrNew("alias").addAll(alias);
 
             d.getOrNew("options")
                     .set("apns_production", true);
 
-            d.getOrNew("notification").build(n -> {
+            d.getOrNew("notification").then(n -> {
                 n.getOrNew("android")
                         .set("alert", content);
 
@@ -53,7 +53,7 @@ public class HeiheiDefaultImp implements Heihei {
                         .set("sound", "happy");
             });
 
-            d.getOrNew("message").build(n -> {
+            d.getOrNew("message").then(n -> {
                 n.set("msg_content", content);
             });
         });

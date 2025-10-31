@@ -9,7 +9,7 @@
  */
 package org.noear.water.dso;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WaterAddress;
 import org.noear.water.WaterSetting;
 import org.noear.water.track.TrackEventGather;
@@ -176,7 +176,7 @@ public class TrackApi {
             return;
         }
 
-        String json = ONode.stringify(gather);
+        String json = ONode.serialize(gather);
 
         try {
             Map<String, String> map = new HashMap<>();

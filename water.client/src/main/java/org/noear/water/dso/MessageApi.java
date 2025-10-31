@@ -9,7 +9,7 @@
  */
 package org.noear.water.dso;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WaterAddress;
 import org.noear.water.model.MessageM;
 import org.noear.water.utils.EncryptUtils;
@@ -73,7 +73,7 @@ public class MessageApi {
 
         String txt = apiCaller.post("/msg/subscribe/", params);
 
-        int code = ONode.loadStr(txt).get("code").getInt();
+        int code = ONode.ofJson(txt).get("code").getInt();
         return code == 1 || code == 200;
     }
 
@@ -96,7 +96,7 @@ public class MessageApi {
 
         String txt = apiCaller.post("/msg/unsubscribe/", params);
 
-        int code = ONode.loadStr(txt).get("code").getInt();
+        int code = ONode.ofJson(txt).get("code").getInt();
         return code == 1 || code == 200;
     }
 
@@ -178,7 +178,7 @@ public class MessageApi {
 
         String txt = apiCaller.post("/msg/send/", params);
 
-        ONode data = ONode.loadStr(txt);
+        ONode data = ONode.ofJson(txt);
         int code = data.get("code").getInt();
 
         if (code == 1 || code == 200) {
@@ -241,7 +241,7 @@ public class MessageApi {
 
         String txt = apiCaller.post("/msg/send/", params);
 
-        ONode data = ONode.loadStr(txt);
+        ONode data = ONode.ofJson(txt);
         int code = data.get("code").getInt();
 
         if (code == 1 || code == 200) {
@@ -276,7 +276,7 @@ public class MessageApi {
 
         String txt = apiCaller.post("/msg/cancel/", params);
 
-        int code = ONode.loadStr(txt).get("code").getInt();
+        int code = ONode.ofJson(txt).get("code").getInt();
         return code == 1 || code == 200;
     }
 
@@ -306,7 +306,7 @@ public class MessageApi {
 
         String txt = apiCaller.post("/msg/succeed/", params);
 
-        int code = ONode.loadStr(txt).get("code").getInt();
+        int code = ONode.ofJson(txt).get("code").getInt();
         return code == 1 || code == 200;
     }
 

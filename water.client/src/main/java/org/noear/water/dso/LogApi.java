@@ -9,7 +9,7 @@
  */
 package org.noear.water.dso;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WW;
 import org.noear.water.WaterAddress;
 import org.noear.water.WaterClient;
@@ -115,7 +115,7 @@ public class LogApi {
             return;
         }
 
-        String json = ONode.stringify(list);
+        String json = ONode.serialize(list);
 
         try {
             if (WaterSetting.water_logger_gzip()) {

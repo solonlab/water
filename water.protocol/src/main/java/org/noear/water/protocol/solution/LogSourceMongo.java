@@ -2,7 +2,7 @@ package org.noear.water.protocol.solution;
 
 import com.mongodb.client.AggregateIterable;
 import org.bson.Document;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.model.LogM;
 import org.noear.water.model.TagCountsM;
 import org.noear.water.protocol.LogSource;
@@ -124,7 +124,7 @@ public class LogSourceMongo implements LogSource {
         List<TagCountsM> tagCountsList = new ArrayList<>();
         ONode oNode = new ONode();
         for (Document doc : docList) {
-            TagCountsM tc = oNode.fill(doc).get("_id").toObject(TagCountsM.class);
+            TagCountsM tc = oNode.fill(doc).get("_id").toBean(TagCountsM.class);
             tagCountsList.add(tc);
         }
 

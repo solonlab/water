@@ -9,7 +9,7 @@
  */
 package org.noear.water.dso;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WaterAddress;
 import org.noear.water.WaterClient;
 import org.noear.water.model.DiscoverM;
@@ -146,7 +146,7 @@ public class RegistryApi {
         try {
 
             String json = apiCaller.post("/sev/discover/", params);
-            ONode rst = ONode.loadStr(json);
+            ONode rst = ONode.ofJson(json);
             int code = rst.get("code").getInt();
 
             if (code != 1 && code != 200) {
@@ -165,8 +165,8 @@ public class RegistryApi {
 
                 cfg.policy = data.get("policy").getString();
 
-                if (data.contains("list")) {
-                    for (ONode n : data.get("list").ary()) {
+                if (data.hasKey("list")) {
+                    for (ONode n : data.get("list").getArray()) {
                         cfg.add(n.get("protocol").getString(),
                                 n.get("address").getString(),
                                 n.get("meta").getString(),

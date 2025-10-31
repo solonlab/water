@@ -9,10 +9,9 @@
  */
 package wateradmin.controller.paas;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
-import org.noear.solon.annotation.Param;
 import org.noear.solon.auth.annotation.AuthPermissions;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.Context;
@@ -233,7 +232,7 @@ public class LuffyFileController extends BaseController {
         MDC.put("tag1", tag1);
         MDC.put("tag2", tag2);
 
-        paasLog.warn("New setting: {}", ONode.stringify(ctx.paramMap()));
+        paasLog.warn("New setting: {}", ONode.serialize(ctx.paramMap()));
 
         return ajax_save(ctx, data, LuffyFileType.pln);
     }
@@ -376,7 +375,7 @@ public class LuffyFileController extends BaseController {
             return viewModel.code(0, "数据不对！");
         }
 
-        List<LuffyFileModel> list = entity.data.toObjectList(LuffyFileModel.class);
+        List<LuffyFileModel> list = entity.data.toBeanList(LuffyFileModel.class);
 
         LuffyFileType fileType = LuffyFileType.valueOf(type);
 

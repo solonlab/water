@@ -9,7 +9,7 @@
  */
 package waterapi.controller.config;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
@@ -47,7 +47,7 @@ public class CMD_cfg_get extends UapiBase {
             List<ConfigModel> list = DbWaterCfgApi.getConfigByTag(tag);
 
             for (ConfigModel m1 : list) {
-                ONode n = nList.getNew(m1.key);
+                ONode n = nList.getOrNew(m1.key);
                 n.set("key", m1.key);
                 n.set("value", m1.value);
                 n.set("lastModified", m1.gmt_modified);

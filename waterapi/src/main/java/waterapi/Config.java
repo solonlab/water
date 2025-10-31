@@ -1,7 +1,7 @@
 package waterapi;
 
 import org.noear.redisx.RedisClient;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.core.Props;
@@ -79,7 +79,7 @@ public class Config {
                 props.setProperty("url", TML_JDBC_URL.replace(TML_MARK_SERVER, dbServer).replace(TML_MARK_SCHEMA, dbSchema));
             }
 
-            String propsJson = ONode.stringify(props);
+            String propsJson = ONode.serialize(props);
             if (props.size() < 3) {
                 throw new IllegalArgumentException("Water db configuration error: " + propsJson);
             }
@@ -122,7 +122,7 @@ public class Config {
 
             //本地IP订阅
             //
-            ONode oNode = ONode.load(Solon.cfg().argx());
+            ONode oNode = ONode.ofBean(Solon.cfg().argx().toValueMap());
             oNode.remove("server.port");
             String meta = oNode.toJson();
 

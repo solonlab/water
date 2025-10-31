@@ -1,7 +1,7 @@
 package wateradmin.dso;
 
 import lombok.extern.slf4j.Slf4j;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.cloud.CloudClient;
@@ -61,13 +61,13 @@ public class InitPlugin implements Plugin {
                 if (cmd == null) {
                     log.error("::Error= {}", err);
                 } else {
-                    log.error("::Sql= {}\n::Args= {}\n\n::Error= {}", cmd.text, ONode.stringify(cmd.paramMap()), err);
+                    log.error("::Sql= {}\n::Args= {}\n\n::Error= {}", cmd.text, ONode.serialize(cmd.paramMap()), err);
                 }
             } else {
                 if (cmd == null) {
                     log.debug("::Error= {}", err);
                 } else {
-                    log.debug("::Sql= {}\n::Args= {}\n\n::Error= {}", cmd.text, ONode.stringify(cmd.paramMap()), err);
+                    log.debug("::Sql= {}\n::Args= {}\n\n::Error= {}", cmd.text, ONode.serialize(cmd.paramMap()), err);
                 }
             }
         });
@@ -84,7 +84,7 @@ public class InitPlugin implements Plugin {
                 if (isWoodStyle2) {
                     log.debug(cmd.toSqlString());
                 } else {
-                    log.debug(cmd.text + "\r\n" + ONode.stringify(cmd.paramMap()));
+                    log.debug(cmd.text + "\r\n" + ONode.serialize(cmd.paramMap()));
                 }
             }
 

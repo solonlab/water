@@ -1,6 +1,6 @@
 package waterapi.controller.alarm;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Result;
@@ -49,7 +49,7 @@ public class CMD_alarm_push extends UapiBase {
         String rest = ProtocolHub.heihei.push(Config.water_service_name, list, msg);
 
         if (TextUtils.isNotEmpty(rest)) {
-            return Result.succeed(ONode.load(rest));
+            return Result.succeed(ONode.ofJson(rest));
         } else {
             return Result.failure();
         }

@@ -1,7 +1,7 @@
 package features;
 
 import org.junit.jupiter.api.Test;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.model.ConfigM;
 import org.noear.water.utils.GzipUtils;
 import org.noear.water.utils.JsondEntity;
@@ -25,7 +25,7 @@ public class JsondTest {
     @Test
     public void test2() throws Exception {
         ConfigM cfg = new ConfigM("water", "water.url=http://xxx/xx\nwater.name=noear", 12);
-        String json = ONode.stringify(cfg);
+        String json = ONode.serialize(cfg);
 
         String gzip = GzipUtils.gZip(json);
 

@@ -15,7 +15,7 @@
  */
 package org.noear.solon.cloud.extend.water.integration.http;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.cloud.CloudClient;
 import org.noear.solon.cloud.impl.CloudLoadBalance;
 import org.noear.solon.cloud.model.Discovery;

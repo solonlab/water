@@ -15,7 +15,7 @@
  */
 package org.noear.solon.cloud.extend.water.service;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.cloud.CloudDiscoveryHandler;
@@ -110,7 +110,7 @@ public class CloudDiscoveryServiceWaterImpl extends TimerTask implements CloudDi
 
         String meta = null;
         if (instance.meta() != null && instance.meta().size() > 0) {
-            meta = ONode.stringify(instance.meta());
+            meta = ONode.serialize(instance.meta());
         }
 
         String protocol = Utils.annoAlias(instance.protocol(), "http");
@@ -131,7 +131,7 @@ public class CloudDiscoveryServiceWaterImpl extends TimerTask implements CloudDi
     public void registerState(String group, Instance instance, boolean health) {
         String meta = null;
         if (instance.meta() != null) {
-            meta = ONode.stringify(instance.meta());
+            meta = ONode.serialize(instance.meta());
         }
 
         WaterClient.Registry.set(group, instance.service(), instance.address(), meta, health);
@@ -141,7 +141,7 @@ public class CloudDiscoveryServiceWaterImpl extends TimerTask implements CloudDi
     public void deregister(String group, Instance instance) {
         String meta = null;
         if (instance.meta() != null) {
-            meta = ONode.stringify(instance.meta());
+            meta = ONode.serialize(instance.meta());
         }
 
         WaterClient.Registry.unregister(group, instance.service(), instance.address(), meta);

@@ -1,7 +1,7 @@
 package wateradmin.controller.cfg;
 
-import org.noear.snack.ONode;
-import org.noear.snack.core.Feature;
+import org.noear.snack4.ONode;
+import org.noear.snack4.Feature;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -136,7 +136,7 @@ public class I18nController extends BaseController {
         List<EnumModel> lang_type = EnumUtil.get("lang_type");
 
         viewModel.put("lang_type", lang_type);
-        viewModel.put("langs", ONode.stringify(langs));
+        viewModel.put("langs", ONode.serialize(langs));
         viewModel.put("tag_name", tag_name);
         viewModel.put("bundle", bundle);
         return view("cfg/i18n_edit");
@@ -146,7 +146,7 @@ public class I18nController extends BaseController {
     @Mapping("edit/ajax/save")
     public ViewModel saveDo(String tag, String bundle, String name, String nameOld, String items) throws Exception {
         try {
-            List<I18nModel> itemList = ONode.loadStr(items).toObjectList(I18nModel.class);
+            List<I18nModel> itemList = ONode.ofJson(items).toBeanList(I18nModel.class);
 
             boolean result = true;
 
@@ -231,7 +231,7 @@ public class I18nController extends BaseController {
         }
 
         if ("json".equals(fmt)) {
-            String data = ONode.load(i18nMap, Feature.PrettyFormat).toJson();//格式化一下好看些
+            String data = ONode.ofBean(i18nMap, Feature.Write_PrettyFormat).toJson();//格式化一下好看些
             String filename2 = filename + ".json";
 
             ctx.headerSet("Content-Disposition", "attachment; filename=\"" + filename2 + "\"");
@@ -298,7 +298,7 @@ public class I18nController extends BaseController {
             return viewModel.code(0, "数据不对！");
         }
 
-        List<I18nModel> list = entity.data.toObjectList(I18nModel.class);
+        List<I18nModel> list = entity.data.toBeanList(I18nModel.class);
 
         if (list.size() == 0) {
             return viewModel.code(0, "数据为空！");

@@ -143,7 +143,7 @@ public class PropController extends BaseController {
             return viewModel.code(0, "数据不对！");
         }
 
-        List<ConfigModel> list = entity.data.toObjectList(ConfigModel.class);
+        List<ConfigModel> list = entity.data.toBeanList(ConfigModel.class);
 
         for (ConfigModel m : list) {
             DbWaterCfgApi.impConfigOrRep(tag, m);

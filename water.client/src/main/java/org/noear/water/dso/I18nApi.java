@@ -9,7 +9,7 @@
  */
 package org.noear.water.dso;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WaterAddress;
 
 import java.io.IOException;
@@ -73,12 +73,12 @@ public class I18nApi {
                 .data("lang", lang)
                 .post();
 
-        ONode oNode = ONode.loadStr(json);
+        ONode oNode = ONode.ofJson(json);
 
         Map<String, String> map;
         int code = oNode.get("code").getInt();
         if (code == 200) {
-            map = oNode.get("data").toObject(Map.class);
+            map = oNode.get("data").toBean(Map.class);
         } else {
             map = new LinkedHashMap<>();
         }

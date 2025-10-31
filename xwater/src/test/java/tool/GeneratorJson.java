@@ -10,9 +10,8 @@
 package tool;
 
 import org.junit.jupiter.api.Test;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Solon;
-import org.noear.solon.Utils;
 import org.noear.solon.core.Props;
 import org.noear.solon.core.util.IoUtil;
 import org.noear.solon.test.SolonTest;
@@ -79,7 +78,7 @@ public class GeneratorJson {
 
     private void buildTableJosn(DbContext db, String table, String schema) throws Exception {
         List<Map<String, Object>> mapList = db.table(table).selectMapList("*");
-        String json = ONode.stringify(mapList);
+        String json = ONode.serialize(mapList);
 
         String fileName =  schema + "_" + table + ".json";
 

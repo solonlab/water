@@ -1,7 +1,7 @@
 package wateradmin.dso.db;
 
 import lombok.extern.slf4j.Slf4j;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.utils.Datetime;
 import org.noear.water.utils.EncryptUtils;
@@ -52,7 +52,7 @@ public class DbWaterVerApi {
             }
 
             Datetime now_time = Datetime.Now();
-            String data_json = ONode.stringify(data);
+            String data_json = ONode.serialize(data);
             String data_md5 = EncryptUtils.md5(data_json);
 
             String old_data_md5 = getLastVersionMd5(table, keyName, keyValue);

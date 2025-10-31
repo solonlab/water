@@ -9,7 +9,7 @@
  */
 package org.noear.water.dso;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WaterAddress;
 import org.noear.water.model.KeyM;
 
@@ -93,12 +93,12 @@ public class KeyApi {
                 .data("keyId", String.valueOf(orKeyId))
                 .post();
 
-        ONode oNode = ONode.loadStr(json);
+        ONode oNode = ONode.ofJson(json);
 
         KeyM keyM;
         int code = oNode.get("code").getInt();
         if (code == 200) {
-            keyM = oNode.get("data").toObject(KeyM.class);
+            keyM = oNode.get("data").toBean(KeyM.class);
         } else {
             keyM = new KeyM();
         }

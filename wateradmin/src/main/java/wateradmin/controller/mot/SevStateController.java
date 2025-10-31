@@ -1,6 +1,6 @@
 package wateradmin.controller.mot;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -168,8 +168,8 @@ public class SevStateController extends BaseController {
 
         Map<String, List> speedReqTate = DbWaterRegApi.getChartsForDate(key, "memory_used"); //total_num
         Map<String, List> speeds = DbWaterRegApi.getChartsForMonth(key);
-        viewModel.put("speedReqTate", ONode.stringify(speedReqTate));
-        viewModel.put("speeds", ONode.stringify(speeds));
+        viewModel.put("speedReqTate", ONode.serialize(speedReqTate));
+        viewModel.put("speeds", ONode.serialize(speeds));
         viewModel.put("key", key);
         viewModel.put("service", sev.name);
         viewModel.put("address", sev.getAddress());

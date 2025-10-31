@@ -1,7 +1,6 @@
 package waterapi.controller.log;
 
-import org.noear.snack.ONode;
-import org.noear.snack.core.Options;
+import org.noear.snack4.ONode;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -57,12 +56,12 @@ public class CMD_log_add2 extends UapiBase {
         }
 
         List<LogM> list = new ArrayList<>();
-        ONode oNode = ONode.load(list_json);
+        ONode oNode = ONode.ofJson(list_json);
         String typePropertyName = oNode.options().getTypePropertyName();
-        for (ONode n1 : oNode.ary()) {
+        for (ONode n1 : oNode.getArray()) {
             n1.remove(typePropertyName);
 
-            LogM log = n1.toObject(LogM.class);
+            LogM log = n1.toBean(LogM.class);
             
             if (log.log_id == 0) {
                 log.log_id = SnowflakeUtils.genId(); //ProtocolHub.idBuilder.getLogId(log.logger);

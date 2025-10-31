@@ -1,6 +1,6 @@
 package waterapi.controller.register;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
@@ -53,7 +53,7 @@ public class CMD_sev_discover extends UapiBase {
             policy = cfg.policy;
         }
 
-        if(url == null){
+        if (url == null) {
             url = "";
         }
 
@@ -68,11 +68,14 @@ public class CMD_sev_discover extends UapiBase {
         data.set("agent", url);
         data.set("policy", policy); //default(轮询),weight(权重),ip_hash(IP哈希),url_hash(URL哈希) //default=polling
 
-        data.getOrNew("list").addAll(list, (n, m) -> {
-            n.set("protocol", "http");
-            n.set("address", m.address);
-            n.set("meta", m.meta);
-            n.set("weight", 1);
+        data.getOrNew("list").then((obj) -> {
+            for (ServiceModel m : list) {
+                ONode n = obj.addNew();
+                n.set("protocol", "http");
+                n.set("address", m.address);
+                n.set("meta", m.meta);
+                n.set("weight", 1);
+            }
         });
 
         return Result.succeed(data);

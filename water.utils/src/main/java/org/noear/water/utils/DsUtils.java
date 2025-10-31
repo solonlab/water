@@ -10,8 +10,9 @@
 package org.noear.water.utils;
 
 import com.zaxxer.hikari.HikariDataSource;
-import org.noear.snack.core.exts.ClassWrap;
-import org.noear.snack.core.exts.FieldWrap;
+import org.noear.eggg.FieldEggg;
+import org.noear.snack4.ONode;
+import org.noear.snack4.codec.util.EgggUtil;
 import org.noear.wood.DbContext;
 import org.noear.wood.DbDataSource;
 
@@ -50,15 +51,7 @@ public class DsUtils {
         String driverClassName = prop.getProperty("driverClassName");
 
         if (pool) {
-            HikariDataSource source = new HikariDataSource();
-
-            for (FieldWrap fw : ClassWrap.get(HikariDataSource.class).fieldAllWraps()) {
-                String valStr = prop.getProperty(fw.getName());
-                if (TextUtils.isNotEmpty(valStr)) {
-                    Object val = ConvertUtil.to(fw.getType(), valStr);
-                    fw.setValue(source, val);
-                }
-            }
+            HikariDataSource source = ONode.ofBean(prop).toBean(HikariDataSource.class);
 
             if (TextUtils.isNotEmpty(url)) {
                 source.setJdbcUrl(url);

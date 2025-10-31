@@ -1,6 +1,6 @@
 package org.noear.water.utils;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -8,7 +8,7 @@ import java.util.Properties;
 public class PropertiesJson extends Properties {
 
     public synchronized void loadJson(String text) throws IOException {
-        ONode node = ONode.loadStr(text);
+        ONode node = ONode.ofJson(text);
 
         String prefix = "";
         load0(prefix, node);
@@ -16,7 +16,7 @@ public class PropertiesJson extends Properties {
 
     private void load0(String prefix, ONode tmp) {
         if (tmp.isObject()) {
-            tmp.forEach((k, v) -> {
+            tmp.getObjectUnsafe().forEach((k, v) -> {
                 String prefix2 = prefix + "." + k;
                 load0(prefix2, v);
             });
@@ -27,7 +27,7 @@ public class PropertiesJson extends Properties {
             //do_put(prefix, tmp);
 
             int index = 0;
-            for (ONode v : tmp.ary()) {
+            for (ONode v : tmp.getArray()) {
                 String prefix2 = prefix + "[" + index + "]";
                 load0(prefix2, v);
                 index++;

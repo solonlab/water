@@ -2,7 +2,7 @@ package org.noear.water.protocol.solution;
 
 import org.noear.esearchx.EsContext;
 import org.noear.esearchx.EsQuery;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.core.util.ResourceUtil;
 import org.noear.water.model.LogM;
 import org.noear.water.model.TagCountsM;
@@ -129,7 +129,7 @@ public class LogSourceElasticsearch implements LogSource {
 
         List<TagCountsM> list = new ArrayList<>();
 
-        for (ONode n1 : oNode.ary()) {
+        for (ONode n1 : oNode.getArray()) {
             TagCountsM t1 = new TagCountsM();
             t1.tag = n1.get("key").getString();
             t1.counts = n1.get("doc_count").getLong();
@@ -157,7 +157,7 @@ public class LogSourceElasticsearch implements LogSource {
 
             event.class_name = ClassUtils.formatClassName(event.class_name);
 
-            ONode doc = ONode.loadObj(event).build(n -> {
+            ONode doc = ONode.ofBean(event).then(n -> {
                 n.set("@timestamp", event.log_fulltime);
             });
             docs.add(doc);
@@ -186,29 +186,29 @@ public class LogSourceElasticsearch implements LogSource {
         if (_db.policyExist(policyName)) {
             //尝试修改
             String policy_dsl_show = _db.policyShow(policyName);
-            ONode policyDslNode = new ONode().set("policy", ONode.load(policy_dsl_show).get(policyName).get("policy"));
-            ONode minAgeNode = policyDslNode.select("policy.phases.delete.min_age");
+            ONode policyDslNode = new ONode().set("policy", ONode.ofJson(policy_dsl_show).get(policyName).get("policy"));
+            ONode minAgeNode = policyDslNode.select("$.policy.phases.delete.min_age");
             if (keepDaysStr.equals(minAgeNode.getString()) == false) {
                 //如果时间不相等，则改掉
-                minAgeNode.val(keepDaysStr);
+                minAgeNode.setValue(keepDaysStr);
                 _db.policyCreate(policyName, policyDslNode.toJson());
             }
         } else {
             //尝试创建
-            ONode policyDslNode = ONode.loadStr(_policy_dsl);
-            policyDslNode.select("policy.phases.delete.min_age").val(keepDaysStr);
+            ONode policyDslNode = ONode.ofJson(_policy_dsl);
+            policyDslNode.select("$.policy.phases.delete.min_age").setValue(keepDaysStr);
             _db.policyCreate(policyName, policyDslNode.toJson());
         }
 
         //2.创建模板（如果存在，则不管）
         if (_db.templateExist(templateName) == false) {
-            ONode tmlDslNode = ONode.loadStr(_stream_dsl);
+            ONode tmlDslNode = ONode.ofJson(_stream_dsl);
             //设定匹配模式
-            tmlDslNode.getOrNew("index_patterns").val(streamPatterns);
+            tmlDslNode.getOrNew("index_patterns").setValue(streamPatterns);
             //设定策略
-            tmlDslNode.get("template").get("settings").get("index.lifecycle.name").val(policyName);
+            tmlDslNode.get("template").get("settings").get("index.lifecycle.name").setValue(policyName);
             //设定翻转别名
-            tmlDslNode.get("template").get("settings").get("index.lifecycle.rollover_alias").val(streamName);
+            tmlDslNode.get("template").get("settings").get("index.lifecycle.rollover_alias").setValue(streamName);
 
             _db.templateCreate(templateName, tmlDslNode.toJson());
         }

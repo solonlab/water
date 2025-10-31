@@ -9,7 +9,7 @@
  */
 package org.noear.water.model;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.utils.Base64Utils;
 import org.noear.water.utils.TextUtils;
 import org.noear.water.utils.ext.Fun1;

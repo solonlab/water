@@ -1,6 +1,6 @@
 package waterapi.dso;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.WW;
@@ -32,11 +32,11 @@ public class LogUtils {
 
             StringBuilder content = new StringBuilder(200);
 
-            content.append("> Header: ").append(ONode.stringify(ctx.headerMap())).append("\n");
-            content.append("> Param: ").append(ONode.stringify(ctx.paramMap())).append("\n");
+            content.append("> Header: ").append(ONode.serialize(ctx.headerMap())).append("\n");
+            content.append("> Param: ").append(ONode.serialize(ctx.paramMap())).append("\n");
             content.append("T Elapsed time: ").append(_times).append("ms");
             content.append("\n\n");
-            content.append("< Body: ").append(ONode.stringify(ctx.result));
+            content.append("< Body: ").append(ONode.serialize(ctx.result));
 
             logger.info(content.toString());
 
@@ -82,7 +82,7 @@ public class LogUtils {
 
             String _from = FromUtils.getFromName(ctx);
             Command cmd = ctx.attr("wood_cmd");
-            String param = ONode.stringify(ctx.paramMap());
+            String param = ONode.serialize(ctx.paramMap());
 
             String tag = ctx.path();
 
@@ -96,7 +96,7 @@ public class LogUtils {
                 StringBuilder sb = new StringBuilder();
                 sb.append("> Param: ").append(param).append("\n");
                 sb.append("$ Sql: ").append(cmd.text).append("\n");
-                sb.append("$ Sql-Param: ").append(ONode.stringify(cmd.paramMap())).append("\n\n");
+                sb.append("$ Sql-Param: ").append(ONode.serialize(cmd.paramMap())).append("\n\n");
                 sb.append("< Error: ").append(Utils.throwableToString(ex));
 
                 logger.error(sb.toString());

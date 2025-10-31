@@ -1,6 +1,6 @@
 package wateradmin.controller.tool;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -22,7 +22,7 @@ public class HeiheiController extends BaseController {
     public ViewModel submit(String msg, String target) throws Exception {
 
         String response = NoticeUtils.heihei(target, msg);
-        ONode obj = ONode.load(response);
+        ONode obj = ONode.ofJson(response);
 
         int code = obj.get("code").getInt();
         if(code == 200) {

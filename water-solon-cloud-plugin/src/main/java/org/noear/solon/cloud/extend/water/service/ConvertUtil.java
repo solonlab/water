@@ -15,7 +15,7 @@
  */
 package org.noear.solon.cloud.extend.water.service;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Utils;
 import org.noear.solon.cloud.model.Discovery;
 import org.noear.solon.cloud.model.Instance;

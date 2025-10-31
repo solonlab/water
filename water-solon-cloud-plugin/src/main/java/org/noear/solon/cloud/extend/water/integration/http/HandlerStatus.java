@@ -15,7 +15,7 @@
  */
 package org.noear.solon.cloud.extend.water.integration.http;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.cloud.CloudClient;
 import org.noear.solon.cloud.extend.water.WaterProps;
 import org.noear.solon.cloud.model.Instance;
@@ -41,7 +41,7 @@ public class HandlerStatus implements Handler {
             rs.name = Instance.local().service();
             rs.address = Instance.local().address();
 
-            ctx.outputAsJson(ONode.stringify(rs));
+            ctx.outputAsJson(ONode.serialize(rs));
         } else {
             ctx.status(400);
             ctx.output("Invalid server token!");

@@ -147,7 +147,7 @@ public class WhitelistController extends BaseController {
             return viewModel.code(0, "数据不对！");
         }
 
-        List<WhitelistModel> list = entity.data.toObjectList(WhitelistModel.class);
+        List<WhitelistModel> list = entity.data.toBeanList(WhitelistModel.class);
 
         for (WhitelistModel m : list) {
             DbWaterCfgSafeApi.impWhitelistOrRep(tag, m);

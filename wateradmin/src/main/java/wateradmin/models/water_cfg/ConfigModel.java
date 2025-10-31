@@ -1,7 +1,7 @@
 package wateradmin.models.water_cfg;
 
 import lombok.Getter;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.water.WW;
 import org.noear.water.model.ConfigM;
 import org.noear.water.utils.Base64Utils;

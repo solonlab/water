@@ -15,7 +15,7 @@
  */
 package org.noear.solon.cloud.extend.water.integration.http;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.cloud.CloudClient;
@@ -54,7 +54,7 @@ public class HandlerStop implements Handler {
         if (Utils.isNotEmpty(instance.address())) {
             String meta = null;
             if (instance.meta() != null) {
-                meta = ONode.stringify(instance.meta());
+                meta = ONode.serialize(instance.meta());
             }
 
             WaterClient.Registry.set(Solon.cfg().appGroup(), instance.service(), instance.address(), meta, enabled);

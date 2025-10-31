@@ -9,7 +9,7 @@
  */
 package org.noear.water.model;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,7 +49,7 @@ public class PropertiesM  extends Properties {
     }
 
     public <T> T toObject(Class<T> clz) {
-        return toNode().toObject(clz);
+        return toNode().toBean(clz);
     }
 
     /**

@@ -5,7 +5,7 @@ import org.noear.luffy.dso.JtFun;
 import org.noear.luffy.dso.JtUtil;
 import org.noear.mongox.MgContext;
 import org.noear.redisx.RedisClient;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.annotation.Note;
 import org.noear.water.WaterClient;
 import org.noear.water.WaterProxy;

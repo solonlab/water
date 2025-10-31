@@ -2,7 +2,7 @@ package wateradmin.controller.dev;
 
 import lombok.extern.slf4j.Slf4j;
 import org.bson.Document;
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
@@ -50,23 +50,23 @@ public class QueryMongoDbController extends BaseController {
         ONode node = new ONode();
         //1.对不良条件进行过滤
         if (TextUtils.isEmpty(code)) {
-            return node.val("请输入代码").toJson();
+            return node.setValue("请输入代码").toJson();
         }
 
         if (code.indexOf("#") < 0)
-            return node.val("请指定配置").toJson();
+            return node.setValue("请指定配置").toJson();
 
         String code_raw = code;
         String[] ss = code.trim().split("\n");
 
         if (ss.length < 2) {
-            return node.val("请输入有效代码").toJson();
+            return node.setValue("请输入有效代码").toJson();
         }
 
         //1.检查配置
         String cfg_str = ss[0].trim();
         if (cfg_str.startsWith("#") == false || cfg_str.indexOf("/") < 0) {
-            return node.val("请输入有效的配置").toJson();
+            return node.setValue("请输入有效的配置").toJson();
         } else {
             cfg_str = cfg_str.substring(1).trim();
         }
@@ -76,18 +76,18 @@ public class QueryMongoDbController extends BaseController {
         String[] ss2 = methodAndPath.split(" ");
 
         if (ss2.length != 2) {
-            return node.val("请输入有效的Method和Db").toJson();
+            return node.setValue("请输入有效的Method和Db").toJson();
         }
 
         String method = ss2[0].trim().toUpperCase();
         String dbAndColl = ss2[1].trim();
 
         if (method.equals("FIND") == false && method.equals("COUNT") == false) {
-            return node.val("只支持查询操作").toJson();
+            return node.setValue("只支持查询操作").toJson();
         }
 
         if (TextUtils.isEmpty(dbAndColl) || dbAndColl.contains("/") == false) {
-            return node.val("请输入Db和Coll").toJson();
+            return node.setValue("请输入Db和Coll").toJson();
         }
 
         String db = dbAndColl.split("/")[0].trim();
@@ -100,8 +100,8 @@ public class QueryMongoDbController extends BaseController {
             json.append(ss[i]);
         }
 
-        if (ONode.loadStr(json.toString()).isObject() == false) {
-            return node.val("请输入有效的Json代码").toJson();
+        if (ONode.ofJson(json.toString()).isObject() == false) {
+            return node.setValue("请输入有效的Json代码").toJson();
         }
 
         try {
@@ -110,8 +110,8 @@ public class QueryMongoDbController extends BaseController {
             int json_start = code.indexOf("{");
             code = code.substring(json_start);
 
-            ONode codeQ = ONode.load(code);
-            Map<String, Object> whereMap = codeQ.get("query").toObject(Map.class);
+            ONode codeQ = ONode.ofJson(code);
+            Map<String, Object> whereMap = codeQ.get("query").toBean(Map.class);
             int limit = codeQ.get("limit").getInt();
             if (limit > 50) {
                 limit = 50;
@@ -142,9 +142,9 @@ public class QueryMongoDbController extends BaseController {
 
                     List<Document> list = qr.limit(limit).selectMapList();
 
-                    rstJson = ONode.stringify(list);
+                    rstJson = ONode.serialize(list);
                 } else {
-                    rstJson = ONode.stringify(qr.selectCount());
+                    rstJson = ONode.serialize(qr.selectCount());
                 }
 
                 //记录日志

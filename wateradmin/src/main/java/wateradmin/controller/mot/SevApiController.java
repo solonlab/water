@@ -9,7 +9,7 @@
  */
 package wateradmin.controller.mot;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.WaterClient;
@@ -144,8 +144,8 @@ public class SevApiController extends BaseController {
         Map<String, List> speedReqTate = DbWaterOpsApi.getSpeedForDate(tag, name_md5, service, "total_num");
         Map<String, List> speeds = DbWaterOpsApi.getSpeedForMonth(tag, name_md5, service);
 
-        viewModel.put("speedReqTate", ONode.stringify(speedReqTate));
-        viewModel.put("speeds", ONode.stringify(speeds));
+        viewModel.put("speedReqTate", ONode.serialize(speedReqTate));
+        viewModel.put("speeds", ONode.serialize(speeds));
         viewModel.put("tag", tag);
         viewModel.put("name", WaterClient.Track.getName(name_md5));
         viewModel.put("name_md5", name_md5);

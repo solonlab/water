@@ -1,6 +1,6 @@
 package org.noear.water.utils;
 
-import org.noear.snack.ONode;
+import org.noear.snack4.ONode;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -21,7 +21,7 @@ public class LogHelper {
                 return sw.toString();
             } else {
                 //处理其它对象（进行json）
-                return ONode.load(content).toJson();
+                return ONode.ofBean(content).toJson();
             }
         }
 
