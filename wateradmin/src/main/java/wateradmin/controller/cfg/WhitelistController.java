@@ -1,5 +1,6 @@
 package wateradmin.controller.cfg;
 
+import org.noear.snack4.codec.TypeRef;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.auth.annotation.AuthPermissions;
@@ -147,7 +148,7 @@ public class WhitelistController extends BaseController {
             return viewModel.code(0, "数据不对！");
         }
 
-        List<WhitelistModel> list = entity.data.toBeanList(WhitelistModel.class);
+        List<WhitelistModel> list = entity.data.toBean(new TypeRef<List<WhitelistModel>>() {});
 
         for (WhitelistModel m : list) {
             DbWaterCfgSafeApi.impWhitelistOrRep(tag, m);

@@ -1,5 +1,6 @@
 package wateradmin.controller.cfg;
 
+import org.noear.snack4.codec.TypeRef;
 import org.noear.solon.auth.annotation.AuthPermissions;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.ModelAndView;
@@ -143,7 +144,7 @@ public class PropController extends BaseController {
             return viewModel.code(0, "数据不对！");
         }
 
-        List<ConfigModel> list = entity.data.toBeanList(ConfigModel.class);
+        List<ConfigModel> list = entity.data.toBean(TypeRef.listOf(ConfigModel.class));
 
         for (ConfigModel m : list) {
             DbWaterCfgApi.impConfigOrRep(tag, m);

@@ -2,6 +2,7 @@ package wateradmin.controller.cfg;
 
 import org.noear.snack4.ONode;
 import org.noear.snack4.Feature;
+import org.noear.snack4.codec.TypeRef;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -146,7 +147,7 @@ public class I18nController extends BaseController {
     @Mapping("edit/ajax/save")
     public ViewModel saveDo(String tag, String bundle, String name, String nameOld, String items) throws Exception {
         try {
-            List<I18nModel> itemList = ONode.ofJson(items).toBeanList(I18nModel.class);
+            List<I18nModel> itemList = ONode.ofJson(items).toBean(new TypeRef<List<I18nModel>>() {});
 
             boolean result = true;
 
@@ -298,7 +299,7 @@ public class I18nController extends BaseController {
             return viewModel.code(0, "数据不对！");
         }
 
-        List<I18nModel> list = entity.data.toBeanList(I18nModel.class);
+        List<I18nModel> list = entity.data.toBean(new TypeRef<List<I18nModel>>() {});
 
         if (list.size() == 0) {
             return viewModel.code(0, "数据为空！");

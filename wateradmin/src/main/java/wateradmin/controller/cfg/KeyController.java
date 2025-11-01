@@ -1,5 +1,6 @@
 package wateradmin.controller.cfg;
 
+import org.noear.snack4.codec.TypeRef;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -150,7 +151,7 @@ public class KeyController extends BaseController {
                 return viewModel.code(0, "数据不对！");
             }
 
-            List<KeyModel> list = entity.data.toBeanList(KeyModel.class);
+            List<KeyModel> list = entity.data.toBean(new TypeRef<List<KeyModel>>() {});
 
             for (KeyModel m : list) {
                 DbWaterCfgKeyApi.impKeyOrRep(tag, m);

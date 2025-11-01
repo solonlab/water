@@ -10,6 +10,7 @@
 package waterapi.controller.job;
 
 import org.noear.snack4.ONode;
+import org.noear.snack4.codec.TypeRef;
 import org.noear.solon.Solon;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -59,7 +60,7 @@ public class CMD_job_register extends UapiBase {
             }
 
             if (oNode.isArray()) {
-                List<JobM> jobList = oNode.toBeanList(JobM.class);
+                List<JobM> jobList = oNode.toBean(new TypeRef<List<JobM>>() { });
                 for (JobM job : jobList) {
                     DbPassApi.addJob(tag, service, job.name, job.cron7x, job.description, nTime);
                 }

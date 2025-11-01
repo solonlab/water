@@ -10,6 +10,7 @@
 package wateradmin.controller.paas;
 
 import org.noear.snack4.ONode;
+import org.noear.snack4.codec.TypeRef;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.auth.annotation.AuthPermissions;
@@ -375,7 +376,7 @@ public class LuffyFileController extends BaseController {
             return viewModel.code(0, "数据不对！");
         }
 
-        List<LuffyFileModel> list = entity.data.toBeanList(LuffyFileModel.class);
+        List<LuffyFileModel> list = entity.data.toBean(new TypeRef<List<LuffyFileModel>>() {});
 
         LuffyFileType fileType = LuffyFileType.valueOf(type);
 
