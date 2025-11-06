@@ -49,7 +49,7 @@
 
         <grit.version>2.2.0</grit.version>
 
-        <snack4.version>4.0.7</snack4.version>
+        <snack4.version>4.0.8</snack4.version>
         <wood.version>1.4.2</wood.version>
         <redisx.version>1.8.2</redisx.version>
         <mongox.version>1.1.2</mongox.version>
