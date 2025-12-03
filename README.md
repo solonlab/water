@@ -30,6 +30,9 @@
 
 
 
+## 授权与许可
+
+本项目为商业开源项目，欢迎企业用户购买许可后使用。
 
 
 ## 介绍（水孕育万物...）
@@ -43,9 +46,6 @@
 对 k8s 友好，支持 ip 漂移、支持 k8s svc 映射（通过上游配置，可真接将服务发现为 k8s service 地址）。
 
 
-## 授权与许可
-
-本项目为商业开源项目，欢迎企业用户购买许可后使用。 
 
 ## 开始
 
@@ -110,14 +110,14 @@
 <dependency>
     <groupId>org.noear.water</groupId>
     <artifactId>water.client</artifactId>
-    <version>2.19.0</version>
+    <version>2.19.1</version>
 </dependency>
 
 <!-- solon cloud 集成版本 （也可用于 Spring Boot 项目） -->
 <dependency>
     <groupId>org.noear.water</groupId>
     <artifactId>water-solon-cloud-plugin</artifactId>
-    <version>2.19.0</version>
+    <version>2.19.1</version>
 </dependency>
 ```
 
