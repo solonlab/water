@@ -5,6 +5,7 @@
 * redisx 升为 1.8.3
 * mongox 升为 1.1.3
 * esearchx 升为 1.1.2
+* luffy 升为 1.11.1
 * snack4 升为 4.0.17
 * solon 升为 3.7.3
 
