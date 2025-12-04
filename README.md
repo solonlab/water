@@ -51,17 +51,17 @@
 
 ### 了解框架与构件
 
-| 组件                          | 说明                                          |
-|-----------------------------|---------------------------------------------|
-| water.client      | 框架：Water 客户端                                |
-| water-solon-cloud-plugin | 框架：Water 客户端 for solon（也可用于 Spring Boot 项目） |
-|                             |                                             |
-| waterapi          | 构建：Water 服务端                                |
-| watersev          | 构建：Water 后台服务（健康检测；数据监视；消息派发；定时任务等...）      |
-| wateradmin        | 构建：Water 控制台（支持LDAP登录）                      |
-| waterfaas         | 构建：Water FaaS 服务，提供轻量级FaaS服务                |
-|                             |                                             |
-| xwater         | 构建：Water 助理工具                               |
+| 组件                          | 说明                                          | 环境要求         |
+|-----------------------------|---------------------------------------------|--------------|
+| water.client      | 框架：Water 客户端                                | jdk8 ~ jdk25 |
+| water-solon-cloud-plugin | 框架：Water 客户端 for solon（也可用于 Spring Boot 项目） | jdk8 ~ jdk25 |
+|                             |                                             |              |
+| waterapi          | 构建：Water 服务端                                | jdk11        |
+| watersev          | 构建：Water 后台服务（健康检测,数据监视,消息派发,定时任务等...）      | jdk11       |
+| wateradmin        | 构建：Water 控制台（支持LDAP登录）                      | jdk11       |
+| waterfaas         | 构建：Water FaaS 服务，提供轻量级FaaS服务                | jdk11       |
+|                             |                                             |              |
+| xwater         | 构建：Water 助理工具                               | jdk11       |
 
 
 ### 控制台演示站
