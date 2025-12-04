@@ -1,4 +1,14 @@
+
 #### 2.19.1
+
+* wood 升为 1.4.3
+* redisx 升为 1.8.3
+* mongox 升为 1.1.3
+* esearchx 升为 1.1.2
+* snack4 升为 4.0.17
+* solon 升为 3.7.3
+
+#### 2.19.0
 
 * 调整 snack3 切换为 snack4
 * solon 升为 3.7.0
