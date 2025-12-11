@@ -19,7 +19,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <water.version>2.19.1</water.version>
+        <water.version>2.19.2</water.version>
     </properties>
 
     <dependencies>
