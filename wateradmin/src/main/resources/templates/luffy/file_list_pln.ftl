@@ -180,10 +180,10 @@
             <tr>
                 <td width="20px"><checkbox><label><input type="checkbox" id="sel_all" /><a></a></label></checkbox></td>
                 <td>路径</td>
-                <td width="150" class="left">计划时间</td>
-                <td width="150" class="left">最后执行（时长）</td>
+                <td width="200" class="left">计划时间</td>
                 <td width="50">状态</td>
                 <td width="50">次数</td>
+                <td class="left" width="80">编辑模式</td>
                 <#if is_admin == 1>
                     <td width="120"></td>
                 <#else>
@@ -203,15 +203,13 @@
                     </td>
                     <td  class="left">
                         ${m1.timexpre()}
-                    </td>
-                    <td  class="left">
+
                         <#if m1.plan_begin_time??>
-                            ${(m1.plan_last_time?string('MM.dd HH:mm'))!}(${m1.timespan()})
+                            <n-l>latest = ${(m1.plan_last_time?string('MM.dd HH:mm'))!}(${m1.timespan()})</n-l>
                         <#else>
                             -
                         </#if>
                     </td>
-
                     <td style='${(m1.plan_state=8)?string("color:red","")}'>
                         <#if m1.plan_begin_time??>
                             <#if m1.plan_state=9>
@@ -234,6 +232,7 @@
                             -
                         </#if>
                     </td>
+                    <td  class="left">${m1.edit_mode!}</td>
                     <td class="op">
                         <#if is_admin == 1>
                             <a class="t2" href='./edit?file_id=${m1.file_id}'>设置</a> |
