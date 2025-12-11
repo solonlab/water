@@ -22,9 +22,11 @@ import org.noear.grit.model.domain.ResourceEntity;
 import org.noear.grit.model.domain.ResourceGroup;
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
+import org.noear.solonx.licence.LicenceInfo;
 import org.noear.water.WW;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.core.handle.Context;
+import org.noear.water.utils.Timecount;
 import wateradmin.dso.Session;
 
 import java.io.IOException;
@@ -34,6 +36,8 @@ import java.util.Map;
 @Slf4j
 @Component("view:header")
 public class HeaderTag implements TemplateDirectiveModel {
+    private static final Timecount TIMECOUNT = new Timecount().start();
+
     @Override
     public void execute(Environment env, Map map, TemplateModel[] templateModels, TemplateDirectiveBody body) throws TemplateException, IOException {
         try{
@@ -63,6 +67,16 @@ public class HeaderTag implements TemplateDirectiveModel {
 
 
         StringBuilder buf = new StringBuilder();
+
+        if(LicenceInfo.getInstance().isValid() == false) {
+            buf.append("<header class='center'>本项目为商业开源项目，欢迎企业用户购买许可后使用（试用期：30天）</header>");
+
+            if(TIMECOUNT.stop().days() > 30){
+                env.getOut().write(buf.toString());
+                return;
+            }
+        }
+
         buf.append("<header>");
 
         buf.append("<label title='").append(WW.water_version).append("'>"); //new
@@ -100,6 +114,8 @@ public class HeaderTag implements TemplateDirectiveModel {
         buf.append("</aside>");//new
 
         buf.append("</header>\n");
+
+
 
         env.getOut().write(buf.toString());
     }
