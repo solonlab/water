@@ -74,7 +74,7 @@ public class LuffyFileModel implements Serializable {
             if (plan_interval.length() > 7 && plan_interval.contains(" ")) {
                 return plan_interval;
             } else {
-                return Datetime.format(plan_begin_time, "MM.dd HH:mm") + " ^" +plan_interval;
+                return Datetime.format(plan_begin_time, "MM-dd HH:mm") + " ^" +plan_interval;
             }
         }
     }

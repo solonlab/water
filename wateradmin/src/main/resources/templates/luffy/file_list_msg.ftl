@@ -156,7 +156,7 @@
                 <td width="20px"><checkbox><label><input type="checkbox" id="sel_all" /><a></a></label></checkbox></td>
                 <td>路径</td>
                 <td class="left">事件主题</td>
-                <td class="left" width="80">编辑模式</td>
+                <td class="center" width="80">编辑模式</td>
                 <td width="20"></td>
                 <#if is_admin == 1>
                     <td width="120"></td>
@@ -177,7 +177,7 @@
                         </#if>
                     </td>
                     <td class="left">${m1.label!}${m1.whitelistLabel()}</td>
-                    <td  class="left">${m1.edit_mode!}</td>
+                    <td class="center">${m1.edit_mode!}</td>
                     <td width="20">${m1.staticize()?string("静","")}</td>
                     </td>
                     <td class="op">

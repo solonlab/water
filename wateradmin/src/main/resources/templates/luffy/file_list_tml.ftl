@@ -158,7 +158,7 @@
                 <td>路径</td>
                 <td width="50">排序</td>
                 <td class="left" width="140">内容类型</td>
-                <td class="left" width="80">编辑模式</td>
+                <td class="center" width="80">编辑模式</td>
                 <td width="20"></td>
                 <#if is_admin == 1>
                     <td width="80"></td>
@@ -183,7 +183,7 @@
                     <td>
                         ${m1.rank!0}
                     <td  class="left">${m1.content_type!}</td>
-                    <td  class="left">${m1.edit_mode!}</td>
+                    <td  class="center">${m1.edit_mode!}</td>
                     <td width="20">${m1.staticize()?string("静","")}</td>
                     </td>
                     <td class="op">
